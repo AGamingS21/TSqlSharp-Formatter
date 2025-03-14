@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace T_SqlFormatter.Parser
+namespace TSqlFormatter.Parser
 {
     public class Lexer
     {
@@ -20,8 +20,7 @@ namespace T_SqlFormatter.Parser
                 case "0":
                 case "1":
                 case "2":
-                    ...
-            case "9":
+                case "9":
                     return processNumericLiteral();
             }
         }
