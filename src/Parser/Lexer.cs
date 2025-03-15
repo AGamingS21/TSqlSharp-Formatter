@@ -41,10 +41,14 @@ namespace TSqlFormatter.Parser
                 return false;
         }
 
-        // Checks for whitespace
+        // Checks for delimiters like whitespace or semi colons
         public bool IsDelimiter(char chr)
         {
-            if(chr == ' ')
+            char[] delimiters = [
+                ' '
+            ];
+
+            if(delimiters.Contains(chr))
                 return true;
             else
                 return false;
@@ -54,24 +58,19 @@ namespace TSqlFormatter.Parser
         {
             int len = input.Length;
             int left = 0;
-            int right = 1;
+            int right = 0;
 
             while(right < len && left <= right)
             {
                 if(!IsDelimiter(input[right]))
                     right++;
 
-                if(right == len)
-                {
-                    
-                }
-
-                if(IsDelimiter(input[right]) && left == right)
+                if(right != len && IsDelimiter(input[right]) && left == right)
                 {
                     right++;
                     left = right;
                 }
-                else if(IsDelimiter(input[right]) && left != right || right == len && left != right)
+                else if(right == len && left != right || IsDelimiter(input[right]) && left != right)
                 {
                     string subString = input.Substring(left, right - left);
 
@@ -83,7 +82,7 @@ namespace TSqlFormatter.Parser
                     {
                         Console.WriteLine($"Token Valid Identifier, Value: {subString}");
                     }
-                    else if(!IsValidIdentifier(subString) && !IsDelimiter(input[right]))
+                    else if(!IsValidIdentifier(subString))
                     {
                         Console.WriteLine($"Token Unknown Identifier, Value: {subString}");
                     }
@@ -94,22 +93,5 @@ namespace TSqlFormatter.Parser
             }
 
         }
-
-
-        // public void nextToken()
-        // {
-        //     char nextChar = charReader.peek();
-        //     switch (nextChar)
-        //     {
-        //         case "\"":
-        //             return processStringLiteral();
-        //         case "0":
-        //         case "1":
-        //         case "2":
-        //         case "9":
-        //             return processNumericLiteral();
-        //     }
-        // }
-
     }
 }
