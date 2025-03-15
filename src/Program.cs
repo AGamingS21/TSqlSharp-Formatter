@@ -8,9 +8,14 @@ namespace TSqlFormatter
     {
         static void Main(string[] args)
         {
+            string filePath = @"./scripts/script1.sql";
+            var text = File.ReadAllText(filePath);
+
             Lexer lexer = new Lexer();
 
-            lexer.nextToken();
+            lexer.Analysis(text);
+
+            //lexer.nextToken();
         }
     }
 }
