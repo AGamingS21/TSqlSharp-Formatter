@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace TSqlFormatter.Parser
 {
-    // Look into moving to a stream instead of string?
     public class Lexer
     {
         public bool IsKeyword(string str)
@@ -41,6 +40,19 @@ namespace TSqlFormatter.Parser
                 return false;
         }
 
+        public bool IsOperator(char str)
+        {
+            char[] operators = [
+                '-',
+                '+',
+                '*'
+            ];
+            if (operators.Contains(str))
+                return true;
+            else
+                return false;
+        }
+
         // Checks for delimiters like whitespace or semi colons
         public bool IsDelimiter(char chr)
         {
@@ -67,6 +79,10 @@ namespace TSqlFormatter.Parser
 
                 if(right != len && IsDelimiter(input[right]) && left == right)
                 {
+                    if(IsOperator(input[right]))
+                    {
+                        Console.WriteLine($"Token Keyword, Value: {input[right]}");
+                    }
                     right++;
                     left = right;
                 }
