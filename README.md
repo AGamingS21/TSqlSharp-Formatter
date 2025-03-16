@@ -14,6 +14,9 @@
 Starting point on how to create a parser
 https://www.geeksforgeeks.org/introduction-of-compiler-design/?ref=lbp
 
+Lexical Analyzer
+https://www.geeksforgeeks.org/c-lexical-analyser-lexer/
+
 
 ### Notes
 #### Lexical Analysis

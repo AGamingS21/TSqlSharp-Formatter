@@ -9,21 +9,10 @@ namespace TSqlFormatter.Parser
 {
     public class Lexer
     {
+
         public bool IsKeyword(string str)
         {
-            string[] keywords = [
-                "select",
-                "from",
-                "into",
-                "insert",
-                "delete",
-                "set",
-                "drop",
-                "table",
-                "procedure",
-                "view"
-            ];
-            if(keywords.Contains(str.ToLower()))
+            if(Tokens.Keywords.Contains(str.ToUpper()))
                 return true;
             else
                 return false;
@@ -31,10 +20,8 @@ namespace TSqlFormatter.Parser
 
         public bool IsValidIdentifier(string str)
         {
-            string[] identifiers = [
-                "*"
-            ];
-            if (identifiers.Contains(str))
+            
+            if (Tokens.Identifiers.Contains(str))
                 return true;
             else
                 return false;
@@ -42,25 +29,31 @@ namespace TSqlFormatter.Parser
 
         public bool IsOperator(char str)
         {
-            char[] operators = [
-                '-',
-                '+',
-                '*'
-            ];
-            if (operators.Contains(str))
+            
+            if (Tokens.Operators.Contains(str))
                 return true;
             else
                 return false;
         }
 
+        public bool IsInteger(string str)
+        {
+            bool isDigit = true;
+            foreach(char chr in str)
+            {
+                if(!Char.IsDigit(chr))
+                {
+                    isDigit = false;
+                    break;
+                }
+            }
+            return isDigit;
+        }
+
         // Checks for delimiters like whitespace or semi colons
         public bool IsDelimiter(char chr)
         {
-            char[] delimiters = [
-                ' '
-            ];
-
-            if(delimiters.Contains(chr))
+            if(Tokens.Delimiters.Contains(chr))
                 return true;
             else
                 return false;
@@ -81,7 +74,7 @@ namespace TSqlFormatter.Parser
                 {
                     if(IsOperator(input[right]))
                     {
-                        Console.WriteLine($"Token Keyword, Value: {input[right]}");
+                        Console.WriteLine($"Token Operator, Value: {input[right]}");
                     }
                     right++;
                     left = right;
@@ -93,6 +86,10 @@ namespace TSqlFormatter.Parser
                     if(IsKeyword(subString))
                     {
                         Console.WriteLine($"Token Keyword, Value: {subString}");
+                    }
+                    else if(IsInteger(subString))
+                    {
+                        Console.WriteLine($"Token Integer, Value: {subString}");
                     }
                     else if(IsValidIdentifier(subString))
                     {
