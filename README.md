@@ -26,3 +26,7 @@ Token Types
 - Constancts
 - Operators
 - Special Symbols
+
+
+#### Other Options
+Once created the AST and parser tryout using the microsoft t-sql parser and using that AST for formatting?

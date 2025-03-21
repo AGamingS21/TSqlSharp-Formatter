@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Formats.Tar;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace TSqlFormatter.Parser
 {
@@ -59,11 +61,13 @@ namespace TSqlFormatter.Parser
                 return false;
         }
 
-        public void Analysis(string input)
+        public List<Token> Analysis(string input)
         {
             int len = input.Length;
             int left = 0;
             int right = 0;
+
+            List<Token> tokens = new List<Token>();
 
             while(right < len && left <= right)
             {
@@ -74,7 +78,8 @@ namespace TSqlFormatter.Parser
                 {
                     if(IsOperator(input[right]))
                     {
-                        Console.WriteLine($"Token Operator, Value: {input[right]}");
+                        tokens.Add( new Token(TokenType.Operator, input[right].ToString()) );
+                        //Console.WriteLine($"Token Operator, Value: {input[right]}");
                     }
                     right++;
                     left = right;
@@ -85,25 +90,31 @@ namespace TSqlFormatter.Parser
 
                     if(IsKeyword(subString))
                     {
-                        Console.WriteLine($"Token Keyword, Value: {subString}");
+                        tokens.Add( new Token(TokenType.Keyword, subString) );
+                        //Console.WriteLine($"Token Keyword, Value: {subString}");
                     }
                     else if(IsInteger(subString))
                     {
-                        Console.WriteLine($"Token Integer, Value: {subString}");
+                        tokens.Add( new Token(TokenType.Integer, subString) );
+                        //Console.WriteLine($"Token Integer, Value: {subString}");
                     }
                     else if(IsValidIdentifier(subString))
                     {
-                        Console.WriteLine($"Token Valid Identifier, Value: {subString}");
+                        tokens.Add( new Token(TokenType.Identifier, subString) );
+                        //Console.WriteLine($"Token Valid Identifier, Value: {subString}");
                     }
                     else if(!IsValidIdentifier(subString))
                     {
-                        Console.WriteLine($"Token Unknown Identifier, Value: {subString}");
+                        tokens.Add( new Token(TokenType.UnknownIdentifier, subString) );
+                        //Console.WriteLine($"Token Unknown Identifier, Value: {subString}");
                     }
                         
                     left = right;
                 }
 
             }
+
+            return tokens;
 
         }
     }

@@ -13,7 +13,7 @@ namespace TSqlFormatter
 
             Lexer lexer = new Lexer();
 
-            lexer.Analysis(text);
+            var tokens = lexer.Analysis(text);
         }
     }
 }
