@@ -10,14 +10,21 @@ namespace TSqlFormatter.Parser
         Integer
         
     }
+
+   
     public class Token
     {
         public string Value {get; set;}
-        public TokenType Type {get; set;}
-        public Token(TokenType tokenType, string value)
+        public TokenType TokenType {get; set;}
+        public int Start {get; set;}
+        public int End {get; set;}
+        public Token(TokenType tokenType, string value, int start, int end)
         {
-            this.Type = tokenType;
+            this.TokenType = tokenType;
             this.Value = value;
+            this.Start = start;
+            this.End = end;
         }
+        
     }
 }

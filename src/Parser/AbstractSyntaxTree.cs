@@ -15,7 +15,21 @@ namespace TSqlFormatter.Parser
             
             foreach(var token in tokens)
             {
-                
+                switch(token.TokenType)
+                {
+                    case TokenType.Keyword:
+                        break;
+                    case TokenType.Identifier:
+                        break;
+                    case TokenType.UnknownIdentifier:
+                        break;
+                    case TokenType.Operator:
+                        break;
+                    case TokenType.Delimiter:
+                        break;
+                    case TokenType.Integer:
+                        break;
+                }       
             }
         }
     }

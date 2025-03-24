@@ -5,8 +5,16 @@ namespace TSqlFormatter.Parser
     public class Node 
     {
         Token Token {get; set;}
-        Node Prev {get; set;}
-        List<Node> Children {get; set;}
+        StatementType statementType {get; set;} 
 
     }
+
+    
+     public enum StatementType
+    {
+        Select,
+        Comment,
+        Drop
+    }
+
 }

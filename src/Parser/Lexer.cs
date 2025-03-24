@@ -78,7 +78,7 @@ namespace TSqlFormatter.Parser
                 {
                     if(IsOperator(input[right]))
                     {
-                        tokens.Add( new Token(TokenType.Operator, input[right].ToString()) );
+                        tokens.Add( new Token(TokenType.Operator, input[right].ToString(), left, right) );
                         //Console.WriteLine($"Token Operator, Value: {input[right]}");
                     }
                     right++;
@@ -90,22 +90,22 @@ namespace TSqlFormatter.Parser
 
                     if(IsKeyword(subString))
                     {
-                        tokens.Add( new Token(TokenType.Keyword, subString) );
+                        tokens.Add( new Token(TokenType.Keyword, subString, left, right) );
                         //Console.WriteLine($"Token Keyword, Value: {subString}");
                     }
                     else if(IsInteger(subString))
                     {
-                        tokens.Add( new Token(TokenType.Integer, subString) );
+                        tokens.Add( new Token(TokenType.Integer, subString, left, right) );
                         //Console.WriteLine($"Token Integer, Value: {subString}");
                     }
                     else if(IsValidIdentifier(subString))
                     {
-                        tokens.Add( new Token(TokenType.Identifier, subString) );
+                        tokens.Add( new Token(TokenType.Identifier, subString, left, right) );
                         //Console.WriteLine($"Token Valid Identifier, Value: {subString}");
                     }
                     else if(!IsValidIdentifier(subString))
                     {
-                        tokens.Add( new Token(TokenType.UnknownIdentifier, subString) );
+                        tokens.Add( new Token(TokenType.UnknownIdentifier, subString, left, right) );
                         //Console.WriteLine($"Token Unknown Identifier, Value: {subString}");
                     }
                         
