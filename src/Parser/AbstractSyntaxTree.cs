@@ -32,5 +32,15 @@ namespace TSqlFormatter.Parser
                 }       
             }
         }
+
+        private void Keyword(string value)
+        {
+            switch(value.ToLower())
+            {
+                case StatementType.Select.:
+                    //
+                    break;
+            }
+        }
     }
 }
