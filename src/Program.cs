@@ -1,5 +1,6 @@
 ﻿using System;
-
+using Microsoft.SqlServer.TransactSql.ScriptDom;
+using TSqlFormatter.Formatter;
 using TSqlFormatter.Parser;
 
 namespace TSqlFormatter
@@ -9,11 +10,34 @@ namespace TSqlFormatter
         static void Main(string[] args)
         {
             string filePath = @"./scripts/script1.sql";
-            var text = File.ReadAllText(filePath);
+            
+            using (var streamReader = new StreamReader(filePath))
+            {
+                TSql150Parser parser = new TSql150Parser(false);
+                IList<ParseError> errors;
+                var tree = parser.Parse(streamReader, out errors);
 
-            Lexer lexer = new Lexer();
+                if (errors.Count > 0)
+                {
+                    Console.WriteLine(errors.Count + " Errors occured Exiting now");
+                    Environment.Exit(1);
+                }
 
-            var tokens = lexer.Analysis(text);
+                var formatter = new Formatter.Formatter();
+
+                formatter.Format(tree);
+
+                
+
+            }
+
+            
+            
+            // var text = File.ReadAllText(filePath);
+
+            // Lexer lexer = new Lexer();
+
+            // var tokens = lexer.Analysis(text);
         }
     }
 }

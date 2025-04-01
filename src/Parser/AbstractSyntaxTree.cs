@@ -2,11 +2,11 @@ namespace TSqlFormatter.Parser
 {
     public class AbstractSyntaxTree
     {
-        List<Node> statements {get; set;}
+        
 
         public AbstractSyntaxTree()
         {
-            statements = new List<Node>();
+            
         }
 
         // syntactic analysis and building ast
@@ -35,12 +35,12 @@ namespace TSqlFormatter.Parser
 
         private void Keyword(string value)
         {
-            switch(value.ToLower())
-            {
-                case StatementType.Select.:
-                    //
-                    break;
-            }
+            // switch(value.ToLower())
+            // {
+            //     case StatementType.Select.:
+            //         //
+            //         break;
+            // }
         }
     }
 }

@@ -14,4 +14,8 @@
   </None>
 </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SqlServer.TransactSql.ScriptDom" Version="170.28.0" />
+  </ItemGroup>
+
 </Project>
