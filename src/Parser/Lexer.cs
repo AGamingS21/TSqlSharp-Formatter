@@ -29,7 +29,7 @@ namespace TSqlFormatter.Parser
                 return false;
         }
 
-        public bool IsOperator(char str)
+        public bool IsOperator(string str)
         {
             
             if (Tokens.Operators.Contains(str))
@@ -76,11 +76,11 @@ namespace TSqlFormatter.Parser
 
                 if(right != len && IsDelimiter(input[right]) && left == right)
                 {
-                    if(IsOperator(input[right]))
-                    {
-                        tokens.Add( new Token(TokenType.Operator, input[right].ToString(), left, right) );
-                        //Console.WriteLine($"Token Operator, Value: {input[right]}");
-                    }
+                    // if(IsOperator(input[right]))
+                    // {
+                    //     tokens.Add( new Token(TokenType.Operator, input[right].ToString(), left, right) );
+                    //     //Console.WriteLine($"Token Operator, Value: {input[right]}");
+                    // }
                     right++;
                     left = right;
                 }

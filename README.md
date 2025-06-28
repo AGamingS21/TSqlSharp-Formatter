@@ -1,5 +1,27 @@
 # TSqlFormatter
 
+
+
+## TO DO NOW
+- Get Select Statement into object
+    - ~~Columns~~
+    - ~~Into~~
+    - ~~From~~
+    - Where
+        - still need to format with line breaks when changing clauses.
+    - Order By
+    - Group By
+    - Having
+    - Distinct
+    - Top
+- make it print nice
+- repeast for drop table statement
+- generisize
+- do for more complex select statements
+    - Sub-Queries
+- determine next steps
+
+
 ## Steps:
 - Create Parser
 - Create Abstract Syntax Tree (AST)
@@ -8,6 +30,12 @@
 ## ToDo
 - stream reader vs string lexing?
 - get all keywords, identifierrs, operators etc
+
+PLAN:
+- Map SQL ScriptDom object to my own object I can easily maniplulate
+- Then Properly format
+- Try and create a more generic way to do syntactic analysis or formatting.
+- Within each class try and have a their own format class??
 
 
 ## Resources

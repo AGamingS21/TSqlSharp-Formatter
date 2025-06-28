@@ -10,7 +10,7 @@ namespace TSqlFormatter
         static void Main(string[] args)
         {
             string filePath = @"./scripts/script1.sql";
-            
+
             using (var streamReader = new StreamReader(filePath))
             {
                 TSql150Parser parser = new TSql150Parser(false);
@@ -27,12 +27,12 @@ namespace TSqlFormatter
 
                 formatter.Format(tree);
 
-                
+
 
             }
 
-            
-            
+
+
             // var text = File.ReadAllText(filePath);
 
             // Lexer lexer = new Lexer();
