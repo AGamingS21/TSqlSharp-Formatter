@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
-using TSqlSharp.Formatter;
+using TSqlSharp.Formating;
 using TSqlSharp.Parser;
 
 namespace TSqlSharp
@@ -23,7 +23,7 @@ namespace TSqlSharp
                     Environment.Exit(1);
                 }
 
-                var formatter = new Formatter.Formatter();
+                var formatter = new Formatter();
 
                 Console.WriteLine(formatter.Format(tree));
 

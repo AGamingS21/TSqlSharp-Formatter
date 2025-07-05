@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSqlFormatter", "src\TSqlFormatter.csproj", "{240D840D-EC05-480C-A02D-1B1CC5D31498}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSqlSharp", "src\TSqlSharp.csproj", "{240D840D-EC05-480C-A02D-1B1CC5D31498}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T-SQLFormatter.Tests", "tests\T-SQLFormatter.Tests\T-SQLFormatter.Tests.csproj", "{01870610-8F53-474E-8133-195E1C085021}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSqlSharp.Tests", "tests\TSqlSharp.Tests\TSqlSharp.Tests.csproj", "{01870610-8F53-474E-8133-195E1C085021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

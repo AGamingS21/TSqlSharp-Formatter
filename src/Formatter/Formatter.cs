@@ -3,7 +3,7 @@ using System.Data;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
 using TSqlSharp.Parser;
 
-namespace TSqlSharp.Formatter
+namespace TSqlSharp.Formating
 {
     public class Formatter
     {

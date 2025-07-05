@@ -1,8 +1,8 @@
-﻿using TSqlFormatter.Formatter;
+﻿using TSqlSharp.Formating;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
 
 
-namespace TSQLFormatter.Tests;
+namespace TSqlSharp.Tests;
 
 public class FormatterTests
 {
