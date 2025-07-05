@@ -1,0 +1,39 @@
+name: Build Pipeline
+
+on:
+  pull_request:
+  
+env:
+  DOTNET_VERSION: '9.x'
+  SOLUTION_PATH: 'TSqlSharp.sln'
+
+jobs:
+      
+  build:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore
+        run: dotnet restore ${{ env.SOLUTION_PATH }}
+
+      - name: Build
+        run: dotnet build ${{ env.SOLUTION_PATH }}
+          --configuration Release
+          --no-restore
+      
+      - name: Test
+        run: dotnet test ${{ env.SOLUTION_PATH }}
+          --configuration Release
+          --no-restore
+          --no-build
+          --verbosity normal
+
+      
+       
