@@ -58,6 +58,7 @@ namespace TSqlFormatter.Parser
             "SQUARE",
             "TAN",
             "AVG",
+            "CAST",
             "CHECKSUM_AGG",
             "COUNT",
             "COUNT_BIG",
@@ -407,7 +408,8 @@ namespace TSqlFormatter.Parser
                     "UNION",
                     "UNIQUE",
                     "UNPIVOT",
-                    "UPDATE"
+                    "UPDATE",
+                    "WHERE"
                 ];
     }
 }

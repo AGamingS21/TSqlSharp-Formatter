@@ -58,3 +58,9 @@ Token Types
 
 #### Other Options
 Once created the AST and parser tryout using the microsoft t-sql parser and using that AST for formatting?
+
+
+
+When to not Break Line:
+- When indented out lines continue until comma or AND or OR or Brackets(This will and an indent)
+- Do ni a 
