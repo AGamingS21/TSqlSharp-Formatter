@@ -28,6 +28,9 @@ jobs:
           --configuration Release
           --no-restore
 
+  test:
+    runs-on: ununtu-latest
+    steps:
       - name: Test
         run: dotnet test ${{ env.SOLUTION_PATH }}
           --configuration Release
