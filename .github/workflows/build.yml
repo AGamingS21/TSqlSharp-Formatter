@@ -30,8 +30,15 @@ jobs:
 
   test:
     runs-on: ununtu-latest
-    # needs: build
+    needs: build
     steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      
       - name: Test
         run: dotnet test ${{ env.SOLUTION_PATH }}
           --configuration Release
