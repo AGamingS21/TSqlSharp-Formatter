@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
-using TSqlFormatter.Parser;
+using TSqlSharp.Parser;
 
-namespace TSqlFormatter.Formatter
+namespace TSqlSharp.Formatter
 {
     public class Formatter
     {

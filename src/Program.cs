@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
-using TSqlFormatter.Formatter;
-using TSqlFormatter.Parser;
+using TSqlSharp.Formatter;
+using TSqlSharp.Parser;
 
-namespace TSqlFormatter
+namespace TSqlSharp
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            string filePath = @"./scripts/script1.sql";
+            string filePath = @"./scripts/Select.sql";
 
             using (var streamReader = new StreamReader(filePath))
             {
