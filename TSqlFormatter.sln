@@ -5,19 +5,50 @@ VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSqlFormatter", "src\TSqlFormatter.csproj", "{240D840D-EC05-480C-A02D-1B1CC5D31498}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T-SQLFormatter.Tests", "tests\T-SQLFormatter.Tests\T-SQLFormatter.Tests.csproj", "{01870610-8F53-474E-8133-195E1C085021}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Debug|x64.Build.0 = Debug|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Debug|x86.Build.0 = Debug|Any CPU
 		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Release|x64.ActiveCfg = Release|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Release|x64.Build.0 = Release|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Release|x86.ActiveCfg = Release|Any CPU
+		{240D840D-EC05-480C-A02D-1B1CC5D31498}.Release|x86.Build.0 = Release|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Debug|x64.Build.0 = Debug|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Debug|x86.Build.0 = Debug|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Release|x64.ActiveCfg = Release|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Release|x64.Build.0 = Release|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Release|x86.ActiveCfg = Release|Any CPU
+		{01870610-8F53-474E-8133-195E1C085021}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{01870610-8F53-474E-8133-195E1C085021} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {29188B90-946F-4744-81D2-897A3637FAD3}

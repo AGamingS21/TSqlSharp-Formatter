@@ -9,7 +9,7 @@ namespace TSqlSharp
     {
         static void Main(string[] args)
         {
-            string filePath = @"./scripts/Select.sql";
+            string filePath = @"../../../../tests/scripts/Select.sql";
 
             using (var streamReader = new StreamReader(filePath))
             {
@@ -25,7 +25,7 @@ namespace TSqlSharp
 
                 var formatter = new Formatter.Formatter();
 
-                formatter.Format(tree);
+                Console.WriteLine(formatter.Format(tree));
 
 
 
