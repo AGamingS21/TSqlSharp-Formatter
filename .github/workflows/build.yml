@@ -30,6 +30,7 @@ jobs:
 
   test:
     runs-on: ununtu-latest
+    needs: build
     steps:
       - name: Test
         run: dotnet test ${{ env.SOLUTION_PATH }}
