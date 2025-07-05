@@ -9,7 +9,7 @@ namespace TSqlFormatter
     {
         static void Main(string[] args)
         {
-            string filePath = @"./scripts/script1.sql";
+            string filePath = @"../../../../tests/scripts/Select.sql";
 
             using (var streamReader = new StreamReader(filePath))
             {
@@ -25,7 +25,7 @@ namespace TSqlFormatter
 
                 var formatter = new Formatter.Formatter();
 
-                formatter.Format(tree);
+                Console.WriteLine(formatter.Format(tree));
 
 
 
