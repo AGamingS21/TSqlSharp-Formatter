@@ -1,63 +1,34 @@
-# TSqlFormatter
+# TSqlSharp Formatter
+TSqlSharp Formatter is a C# library for pretty-printing SQL queries.
 
+This project currently uses the [Microsoft.SqlServer.TransactSql.ScriptDom](https://www.nuget.org/packages/Microsoft.SqlServer.TransactSql.ScriptDom) NuGet pacakge to handle parsing into an tokens and an AST. Hoping in the future to write a parser to remove the dependency.
 
+To use this library in vscode this project will be transcompiled into javascript. This will then be able to be shipped into a NPM package to create an extension in vscode.
 
-## TO DO NOW
-- Get Select Statement into object
-    - ~~Columns~~
-    - ~~Into~~
-    - ~~From~~
-    - Where
-        - still need to format with line breaks when changing clauses.
-    - Order By
-    - Group By
-    - Having
-    - Distinct
-    - Top
-- make it print nice
-- repeast for drop table statement
-- generisize
-- do for more complex select statements
-    - Sub-Queries
-- determine next steps
+## Install
+TBD
 
+## Usage
+Currently the following methods will be supported to use this package
+- vscode
+- cli
+- npm
+- NuGet package
+- SQL Server management Studio
+- Visual Studio 2022
 
-## Steps:
-- Create Parser
-- Create Abstract Syntax Tree (AST)
-- Format Code based on AST
+## Contributing
 
-## ToDo
-- stream reader vs string lexing?
-- get all keywords, identifierrs, operators etc
+### tests
+tests can be ran using ```dotnet run```
 
-PLAN:
-- Map SQL ScriptDom object to my own object I can easily maniplulate
-- Then Properly format
-- Try and create a more generic way to do syntactic analysis or formatting.
-- Within each class try and have a their own format class??
+Make sure to add new tests for any new features.
 
-
-## Resources
-Starting point on how to create a parser
-https://www.geeksforgeeks.org/introduction-of-compiler-design/?ref=lbp
-
-Lexical Analyzer
-https://www.geeksforgeeks.org/c-lexical-analyser-lexer/
-
-
-### Notes
-#### Lexical Analysis
-Token Types
-- Keywords
-- Identifiers
-- Constancts
-- Operators
-- Special Symbols
-
-
-#### Other Options
-Once created the AST and parser tryout using the microsoft t-sql parser and using that AST for formatting?
-
-
-
+## Roadmap
+- ci/cd pipelines
+- convert code to javascript
+- create vscode extension
+- Format support for all of TSQL 2022 syntax
+- create visual studio 2022 extension
+- create SSMS extension
+- Create own parser

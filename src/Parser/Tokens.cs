@@ -1,4 +1,4 @@
-namespace TSqlFormatter.Parser
+namespace TSqlSharp.Parser
 {
     public static class Tokens
     {
