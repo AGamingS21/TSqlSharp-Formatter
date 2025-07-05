@@ -27,17 +27,6 @@ jobs:
         run: dotnet build ${{ env.SOLUTION_PATH }}
           --configuration Release
           --no-restore
-
-  test:
-    runs-on: ununtu-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
       
       - name: Test
         run: dotnet test ${{ env.SOLUTION_PATH }}
@@ -45,7 +34,6 @@ jobs:
           --no-restore
           --no-build
           --verbosity normal
-      
 
       
        
