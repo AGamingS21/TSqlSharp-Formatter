@@ -25,8 +25,8 @@ jobs:
 
       - name: Build
         run: dotnet build ${{ env.SOLUTION_PATH }}
-        --configuration Release
-        --no-restore
+          --configuration Release
+          --no-restore
 
       - name: Test
         run: dotnet test ${{ env.SOLUTION_PATH }}
