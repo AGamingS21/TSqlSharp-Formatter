@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using Microsoft.SqlServer.TransactSql.ScriptDom;
 using TSqlSharp.Formating;
 using TSqlSharp.Parser;
@@ -9,7 +11,7 @@ namespace TSqlSharp
     {
         static void Main(string[] args)
         {
-            string filePath = @"../../../../tests/scripts/Select.sql";
+            string filePath = @"../../../../scripts/Select.sql";
 
             using (var streamReader = new StreamReader(filePath))
             {

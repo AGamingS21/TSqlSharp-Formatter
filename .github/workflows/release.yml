@@ -1,18 +1,19 @@
-name: Build Pipeline
-
+name: Release
+ 
 on:
-  pull_request:
-  
+  release:
+    types: [published]
+
 env:
   DOTNET_VERSION: '9.x'
   SOLUTION_PATH: 'TSqlSharp.sln'
   PROJECT_PATH: 'src/TSqlSharp.csproj'
+  PACKAGE_NAME: 'TSqlSharp.Formatter'
+
 
 jobs:
-      
-  build:
-    runs-on: ubuntu-latest 
-
+  build-and-release:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       
@@ -28,17 +29,12 @@ jobs:
         run: dotnet build ${{ env.SOLUTION_PATH }}
           --configuration Release
           --no-restore
-      
-      - name: Test
-        run: dotnet test ${{ env.SOLUTION_PATH }}
-          --configuration Release
-          --no-restore
-          --no-build
-          --verbosity normal
 
       - name: pack
-        run: dotnet pack ${{ env.PROJECT_PATH }}
-          
+        run: dotnet pack ${{ env.PROJECT_PATH }} --output ./artifacts/${{ env.PACKAGE_NAME }}.${{ github.event.release.tag_name }}.nupkg
 
+      - name: push
+        run: dotnet nuget push ${{ env.PACKAGE_NAME }}.${{ github.event.release.tag_name }}.nupkg -k ${{ secrets.NUGET_API_KEY }}
+          
       
-       
+      
