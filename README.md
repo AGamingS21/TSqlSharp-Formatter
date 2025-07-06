@@ -25,8 +25,9 @@ tests can be ran using ```dotnet run```
 Make sure to add new tests for any new features.
 
 ## Roadmap
-- cd pipeline to nuget and to npm
+- cd pipeline to nuget
 - convert code to javascript
+- cd pipeline to npm
 - create vscode extension
 - Format support for all of TSQL 2022 syntax
 - create visual studio 2022 extension
