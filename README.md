@@ -25,7 +25,6 @@ tests can be ran using ```dotnet run```
 Make sure to add new tests for any new features.
 
 ## Roadmap
-- cd pipeline to nuget
 - convert code to javascript
 - cd pipeline to npm
 - create vscode extension
