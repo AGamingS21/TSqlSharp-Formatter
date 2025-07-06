@@ -2,10 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    
-    <PackageId>TSqlSharpFormatter</PackageId>
+    <PackageId>TSqlSharp.Formatter</PackageId>
     <Authors>agamings21</Authors>
-    <Product>TSqlSharpFormatter</Product>
+    <VersionPrefix></VersionPrefix>
 
   </PropertyGroup>
 
