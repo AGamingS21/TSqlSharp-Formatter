@@ -9,6 +9,7 @@ env:
   SOLUTION_PATH: 'TSqlSharp.sln'
   PROJECT_PATH: 'src/TSqlSharp.csproj'
   PACKAGE_NAME: 'TSqlSharp.Formatter'
+  NUGET_FEED: 'https://api.nuget.org/v3/index.json'
 
 
 jobs:
@@ -34,7 +35,7 @@ jobs:
         run: dotnet pack ${{ env.PROJECT_PATH }} --output ./artifacts/${{ env.PACKAGE_NAME }}.${{ github.event.release.tag_name }}.nupkg
 
       - name: push
-        run: dotnet nuget push ${{ env.PACKAGE_NAME }}.${{ github.event.release.tag_name }}.nupkg -k ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ${{ env.PACKAGE_NAME }}.${{ github.event.release.tag_name }}.nupkg -k ${{ secrets.NUGET_API_KEY }} --source ${{ secrets.NUGET_FEED }} 
           
       
       
