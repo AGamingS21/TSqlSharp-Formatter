@@ -1,47 +1,115 @@
 ﻿using TSqlSharp.Formating;
-using Microsoft.SqlServer.TransactSql.ScriptDom;
-
-
 namespace TSqlSharp.Tests;
-
 public class FormatterTests
 {
     [Fact]
-    public void Format()
+    public void FormatSelect()
     {
         // Arrange
-        string output = "";
+        string acutalOutput = "";
         string expectedOutput = "";
-
         string expectedFilePath = @"../../../../../tests/scripts/SelectExpected.sql";
-
-
-        string filePath = @"../../../../../tests/scripts/Select.sql";
-
+        string acutalFilePath = @"../../../../../tests/scripts/Select.sql";
 
         // Act
+        acutalOutput = GetFormattedString(acutalFilePath);
+        expectedOutput = GetExpectedString(expectedFilePath);
+
+        //Assert
+        Assert.Equal(expectedOutput, acutalOutput);
+    }
+
+    [Fact]
+    public void FormatCreateProc()
+    {
+        // Arrange
+        string acutalOutput = "";
+        string expectedOutput = "";
+        string expectedFilePath = @"../../../../../tests/scripts/CreateProcedureExpected.sql";
+        string acutalFilePath = @"../../../../../tests/scripts/CreateProcedure.sql";
+
+        // Act
+        acutalOutput = GetFormattedString(acutalFilePath);
+        expectedOutput = GetExpectedString(expectedFilePath);
+
+        //Assert
+        Assert.Equal(expectedOutput, acutalOutput);
+    }
+
+    [Fact]
+    public void FormatCreateTable()
+    {
+        // Arrange
+        string acutalOutput = "";
+        string expectedOutput = "";
+        string expectedFilePath = @"../../../../../tests/scripts/CreateTableExpected.sql";
+        string acutalFilePath = @"../../../../../tests/scripts/CreateTable.sql";
+
+        // Act
+        acutalOutput = GetFormattedString(acutalFilePath);
+        expectedOutput = GetExpectedString(expectedFilePath);
+
+        //Assert
+        Assert.Equal(expectedOutput, acutalOutput);
+    }
+
+    [Fact]
+    public void FormatSelectWithCte()
+    {
+        // Arrange
+        string acutalOutput = "";
+        string expectedOutput = "";
+        string expectedFilePath = @"../../../../../tests/scripts/SelectWithCteExpected.sql";
+        string acutalFilePath = @"../../../../../tests/scripts/SelectWithCte.sql";
+
+        // Act
+        acutalOutput = GetFormattedString(acutalFilePath);
+        expectedOutput = GetExpectedString(expectedFilePath);
+
+        //Assert
+        Assert.Equal(expectedOutput, acutalOutput);
+    }
+    [Fact]
+    public void FormatUnknownStatement()
+    {
+        // Arrange
+        string acutalOutput = "";
+        string expectedOutput = "";
+        string expectedFilePath = @"../../../../../tests/scripts/DeleteTableExpected.sql";
+        string acutalFilePath = @"../../../../../tests/scripts/DeleteTable.sql";
+
+        // Act
+        acutalOutput = GetFormattedString(acutalFilePath);
+        expectedOutput = GetExpectedString(expectedFilePath);
+
+        //Assert
+        Assert.Equal(expectedOutput, acutalOutput);
+    }
+
+
+    private string GetFormattedString(string filePath)
+    {
+        var output = "";
         using (var streamReader = new StreamReader(filePath))
         {
-            TSql150Parser parser = new TSql150Parser(false);
-            IList<ParseError> errors;
-            var tree = parser.Parse(streamReader, out errors);
-
-            if (errors.Count > 0)
-            {
-                Console.WriteLine(errors.Count + " Errors occured Exiting now");
-                Environment.Exit(1);
-            }
 
             var formatter = new Formatter();
 
-            output = formatter.Format(tree);
+            output = formatter.Format(filePath);
         }
-        using (var streamReader = new StreamReader(expectedFilePath))
-        {
-            expectedOutput = streamReader.ReadToEnd();
-        }
-        //Asset
-        Assert.Equal(expectedOutput, output); // Check if the result is as expected.
+
+        return output;
 
     }
+
+    private string GetExpectedString(string filePath)
+    {
+        var output = "";
+        using (var streamReader = new StreamReader(filePath))
+        {
+            output = streamReader.ReadToEnd();
+        }
+
+        return output;
+    }        
 }
