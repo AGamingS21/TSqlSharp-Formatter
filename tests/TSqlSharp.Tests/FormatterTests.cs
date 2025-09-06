@@ -90,12 +90,11 @@ public class FormatterTests
     private string GetFormattedString(string filePath)
     {
         var output = "";
+    
         using (var streamReader = new StreamReader(filePath))
         {
-
             var formatter = new Formatter();
-
-            output = formatter.Format(filePath);
+            output = formatter.Format(streamReader.ReadToEnd());
         }
 
         return output;

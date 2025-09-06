@@ -18,10 +18,15 @@ namespace TSqlSharp
             string createTable = @"../../../../scripts/CreateTable.sql";
             string selectCte = @"../../../../scripts/SelectWithCte.sql";
             string delete = @"../../../../scripts/DeleteTable.sql";
-            string filePath = delete;
+            string filePath = select;
             var formatter = new Formatter();
 
-            Console.WriteLine(formatter.Format(filePath));
+            using (var streamReader = new StreamReader(filePath))
+            {
+                Console.WriteLine(formatter.Format(streamReader.ReadToEnd()));
+            }
+
+            
 
           
         }
