@@ -24,8 +24,7 @@ namespace TSqlSharp.Formating
 
                 if (errors.Count > 0)
                 {
-                    Console.WriteLine(errors.Count + " Errors occured Exiting now");
-                    Environment.Exit(1);
+                    return errors[0].Message;
                 }
 
 
