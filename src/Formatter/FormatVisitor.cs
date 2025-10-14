@@ -264,24 +264,46 @@ namespace TSqlSharp.Vistors
         }
         public override void ExplicitVisit(SearchedCaseExpression node)
         {
-
-            foreach(var when in node.WhenClauses)
+            Append("CASE");
+            _indentLevel++;
+            _sb.AppendLine();
+            foreach (var when in node.WhenClauses)
             {
                 when.Accept(this);
             }
-            _indentLevel--;
-            _sb.AppendLine();
-            Append(")");
-            _sb.AppendLine();
+
+            if(node.ElseExpression != null)
+            {
+                node.ElseExpression.Accept(this);
+                _indentLevel--;
+                _sb.AppendLine();  
+            } 
+              
         }
         public override void ExplicitVisit(SearchedWhenClause node)
         {
-
+            Append("WHEN ");
             node.WhenExpression.Accept(this);
-            _indentLevel--;
+
+            _indentLevel++;
             _sb.AppendLine();
-            Append(")");
+            node.ThenExpression.Accept(this);
+            _indentLevel--;                        
             _sb.AppendLine();
+        }
+        public override void ExplicitVisit(LikePredicate node)
+        {
+             node.FirstExpression.Accept(this);
+            //_sb.AppendLine();
+            _sb.Append(" LIKE ");
+            
+            node.SecondExpression.Accept(this);
+        }
+        public override void ExplicitVisit(InPredicate node)
+        {
+            node.Expression.Accept(this);
+            //_sb.AppendLine();
+            
         }
         public override void ExplicitVisit(WithCtesAndXmlNamespaces node)
         {
