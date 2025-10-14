@@ -27,6 +27,10 @@ Make sure to add new tests for any new features.
 - Performance inprovements as codebase is currently a mess inside of visitor class
 
 ## Items To Address:
-- Case statements
 - lines not terminating after ground by for trailing comments
 - schema name not present for when using function in select elemets
+- return a json string with the results of failed or not and bool for success or fail.
+To do:
+- LikePredicate
+- SearchedWhenClause
+- SearchedCaseExpression

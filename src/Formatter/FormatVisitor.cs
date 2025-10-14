@@ -262,6 +262,27 @@ namespace TSqlSharp.Vistors
             Append(")");
             _sb.AppendLine();
         }
+        public override void ExplicitVisit(SearchedCaseExpression node)
+        {
+
+            foreach(var when in node.WhenClauses)
+            {
+                when.Accept(this);
+            }
+            _indentLevel--;
+            _sb.AppendLine();
+            Append(")");
+            _sb.AppendLine();
+        }
+        public override void ExplicitVisit(SearchedWhenClause node)
+        {
+
+            node.WhenExpression.Accept(this);
+            _indentLevel--;
+            _sb.AppendLine();
+            Append(")");
+            _sb.AppendLine();
+        }
         public override void ExplicitVisit(WithCtesAndXmlNamespaces node)
         {
             InjectLeadingCommentStatement(node.ScriptTokenStream, node.FirstTokenIndex);

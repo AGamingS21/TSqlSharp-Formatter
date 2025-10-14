@@ -18,7 +18,8 @@ namespace TSqlSharp
             string createTable = @"../../../../scripts/CreateTable.sql";
             string selectCte = @"../../../../scripts/SelectWithCte.sql";
             string delete = @"../../../../scripts/DeleteTable.sql";
-            string filePath = select;
+            string adhoc = @"../../../../scripts/scripts_hidden/la.sql";
+            string filePath = adhoc;
             var formatter = new Formatter();
 
             using (var streamReader = new StreamReader(filePath))
