@@ -287,6 +287,7 @@ namespace TSqlSharp.Vistors
 
             _indentLevel++;
             _sb.AppendLine();
+            Append("THEN ");
             node.ThenExpression.Accept(this);
             _indentLevel--;                        
             _sb.AppendLine();
