@@ -35,7 +35,7 @@ namespace TSqlSharp.Formating
                 CustomSqlFormatter formatVisitor = new CustomSqlFormatter(commentList);
                 formatVisitor.FormatAst(tree);
                 formatVisitor.PrintRestOfComments();
-                return formatVisitor.GetFormattedSql();
+                return formatVisitor.GetFormattedSql().Trim();
             }
         }
 

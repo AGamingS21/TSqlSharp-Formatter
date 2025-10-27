@@ -25,7 +25,7 @@ namespace TSqlSharp
 
             using (var streamReader = new StreamReader(filePath))
             {
-                var output = formatter.Format(streamReader.ReadToEnd()).Trim();
+                var output = formatter.Format(streamReader.ReadToEnd());
                 Console.WriteLine(output);
             }
 
