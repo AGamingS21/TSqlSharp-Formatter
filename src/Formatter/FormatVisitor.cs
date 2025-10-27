@@ -264,7 +264,7 @@ namespace TSqlSharp.Vistors
         }
         public override void ExplicitVisit(SearchedCaseExpression node)
         {
-            Append("CASE");
+            _sb.Append("CASE");
             _indentLevel++;
             _sb.AppendLine();
             foreach (var when in node.WhenClauses)
@@ -272,12 +272,16 @@ namespace TSqlSharp.Vistors
                 when.Accept(this);
             }
 
-            if(node.ElseExpression != null)
+            if (node.ElseExpression != null)
             {
+
+                Append("ELSE ");
                 node.ElseExpression.Accept(this);
-                _indentLevel--;
-                _sb.AppendLine();  
-            } 
+                
+                _sb.AppendLine();
+            }
+            _indentLevel--;
+            Append("END");
               
         }
         public override void ExplicitVisit(SearchedWhenClause node)

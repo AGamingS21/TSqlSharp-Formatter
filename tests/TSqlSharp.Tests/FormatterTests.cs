@@ -69,14 +69,30 @@ public class FormatterTests
         //Assert
         Assert.Equal(expectedOutput, acutalOutput);
     }
+    // [Fact]
+    // public void FormatUnknownStatement()
+    // {
+    //     // Arrange
+    //     string acutalOutput = "";
+    //     string expectedOutput = "";
+    //     string expectedFilePath = @"../../../../../tests/scripts/DeleteTableExpected.sql";
+    //     string acutalFilePath = @"../../../../../tests/scripts/DeleteTable.sql";
+
+    //     // Act
+    //     acutalOutput = GetFormattedString(acutalFilePath);
+    //     expectedOutput = GetExpectedString(expectedFilePath);
+
+    //     //Assert
+    //     Assert.Equal(expectedOutput, acutalOutput);
+    // }
     [Fact]
-    public void FormatUnknownStatement()
+    public void FormatSelectWithCaseStatement()
     {
         // Arrange
         string acutalOutput = "";
         string expectedOutput = "";
-        string expectedFilePath = @"../../../../../tests/scripts/DeleteTableExpected.sql";
-        string acutalFilePath = @"../../../../../tests/scripts/DeleteTable.sql";
+        string expectedFilePath = @"../../../../../tests/scripts/SelectWithCaseExpected.sql";
+        string acutalFilePath = @"../../../../../tests/scripts/SelectWithCase.sql";
 
         // Act
         acutalOutput = GetFormattedString(acutalFilePath);
