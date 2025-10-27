@@ -20,12 +20,13 @@ namespace TSqlSharp
             string delete = @"../../../../scripts/DeleteTable.sql";
             string adhoc = @"../../../../scripts/scripts_hidden/la.sql";
             string selectCase = @"../../../../scripts/SelectWithCase.sql";
-            string filePath = selectCase;
+            string filePath = adhoc;
             var formatter = new Formatter();
 
             using (var streamReader = new StreamReader(filePath))
             {
-                Console.WriteLine(formatter.Format(streamReader.ReadToEnd()));
+                var output = formatter.Format(streamReader.ReadToEnd()).Trim();
+                Console.WriteLine(output);
             }
 
             

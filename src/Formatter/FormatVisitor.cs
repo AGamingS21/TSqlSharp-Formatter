@@ -109,6 +109,7 @@ namespace TSqlSharp.Vistors
                 {
                     UnknownNode = false;
                     IsParentNode = true;
+                    AppendLine();
                     statement.Accept(this);
 
                     if (UnknownNode)
@@ -298,11 +299,38 @@ namespace TSqlSharp.Vistors
         }
         public override void ExplicitVisit(LikePredicate node)
         {
-             node.FirstExpression.Accept(this);
+            node.FirstExpression.Accept(this);
             //_sb.AppendLine();
             _sb.Append(" LIKE ");
-            
+
             node.SecondExpression.Accept(this);
+        }
+        public override void ExplicitVisit(DeclareVariableStatement node)
+        {
+            Append("DECLARE ");
+            foreach(var declaration in node.Declarations)
+            {
+                declaration.Accept(this);    
+                if(node.Declarations.Count > 1)
+                {
+                    _sb.Append(", ");
+                }
+            }
+            
+            
+        }
+        public override void ExplicitVisit(DeclareVariableElement node)
+        {
+            _sb.Append($"{node.VariableName.Value} {GetIdentifiers(node.DataType.Name.Identifiers)}");
+            if(node.Value != null)
+            {
+                _sb.Append(" = ");
+                node.Value.Accept(this);
+            }
+        }
+        public override void ExplicitVisit(VariableReference node)
+        {
+            _sb.Append(node.Name);
         }
         public override void ExplicitVisit(InPredicate node)
         {
@@ -406,6 +434,24 @@ namespace TSqlSharp.Vistors
 
             node.UpdateSpecification.WhereClause.Accept(this);
 
+        }
+
+
+        public override void ExplicitVisit(DeleteStatement node)
+        {
+            AppendLine();
+            InjectLeadingCommentStatement(node.ScriptTokenStream, node.FirstTokenIndex, true);
+            Append("DELETE");
+            _sb.AppendLine();
+            _indentLevel++;
+            node.DeleteSpecification.Target.Accept(this);
+
+            _sb.AppendLine();
+           
+            _indentLevel--;
+
+            node.DeleteSpecification.WhereClause.Accept(this);
+            
         }
         public override void ExplicitVisit(IfStatement node)
         {
